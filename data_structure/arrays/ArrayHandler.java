@@ -93,18 +93,35 @@ public class ArrayHandler {
         }
 
     }
-
     public void eliminarUnElemento() {
 
-        while (true) { 
+        while (true) {
             try {
                 System.out.println("¿Qué posición quieres eliminar? (Recuerda que inicia en 0)");
-                int indexToUpdate = Integer.parseInt(scanner.nextLine());
-                array[indexToUpdate] = 0;
-                System.out.println("El índice fue eliminado");
+                int indiceAEliminar = Integer.parseInt(scanner.nextLine());
+
+                if (indiceAEliminar < 0 || indiceAEliminar >= size) {
+                    System.err.println("Índice fuera de rango. Intenta de nuevo.");
+                    continue;
+                }
+
+                int elementosAMover = size - indiceAEliminar - 1;
+
+                if (elementosAMover > 0) {
+                    System.arraycopy(array, indiceAEliminar + 1, array, indiceAEliminar, elementosAMover);
+                }
+
+                array[size - 1] = 0;
+
+                size--;
+
+                System.out.println("Elemento eliminado exitosamente.");
                 break;
+
+            } catch (NumberFormatException e) {
+                System.err.println("Por favor ingresa un número válido.");
             } catch (Exception e) {
-                System.err.println(e.getMessage());
+                System.err.println("Ocurrió un error: " + e.getMessage());
             }
         }
 
