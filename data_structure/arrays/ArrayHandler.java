@@ -1,5 +1,5 @@
+package arrays;
 import java.util.Scanner;
-
 
 public class ArrayHandler {
     static Scanner scanner = new Scanner(System.in);

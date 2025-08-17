@@ -1,4 +1,4 @@
-package data_structure.hash_tables;
+package hash_tables;
 
 import java.util.HashSet;
 import java.util.Scanner;

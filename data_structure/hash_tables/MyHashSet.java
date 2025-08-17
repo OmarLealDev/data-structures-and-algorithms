@@ -1,4 +1,4 @@
-package data_structure.hash_tables;
+package hash_tables;
 
 public class MyHashSet<E> {
     private static class Node<E> {

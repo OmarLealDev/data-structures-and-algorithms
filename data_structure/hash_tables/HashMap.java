@@ -1,4 +1,4 @@
-package data_structure.hash_tables;
+package hash_tables;
 
 import java.util.Scanner;
 
@@ -43,12 +43,13 @@ public class HashMap {
     }
 
     public static void showMenu() {
-        System.out.println("-----------------------------------");
+        String guion = "-".repeat(15);
+        System.out.println(guion);
         System.out.println("1. Print Hash Table");
         System.out.println("2. Put an element");
         System.out.println("3. Get an element");
         System.out.println("4. Remove an element");
-        System.out.println("-----------------------------------");
+        System.out.println(guion);
     }
 
     public static void main(String[] args) {
