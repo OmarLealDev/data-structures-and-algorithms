@@ -1,4 +1,4 @@
-package linked_lists.singly;
+package linked_lists.circular;
 
 import java.util.Scanner;
 
@@ -12,9 +12,9 @@ public class LinkedListHandler {
     }
 
     public static void readRecursive(LinkedList linkedList){
-        linkedList.read();
+        linkedList.readRecursive(linkedList.head);
     }
-    
+
     public static void addElementAtBegining(LinkedList linkedList){
         while (true) {
             try{
@@ -70,10 +70,10 @@ public class LinkedListHandler {
         while(true) {
             try {
 
-                System.out.println("Insert the new value");
-                int newValue = Integer.parseInt(scanner.nextLine());
                 System.out.println("Insert the position (Rembember that the first position is 0)");
                 int position = Integer.parseInt(scanner.nextLine());
+                System.out.println("Insert the new value");
+                int newValue = Integer.parseInt(scanner.nextLine());
                 linkedList.updateAnElement(newValue, position);
                 System.out.println("Element updated");
                 break;
@@ -87,13 +87,13 @@ public class LinkedListHandler {
             }
         }
     }
-    
-    public static void deleteAnElement(LinkedList linkedList) {
-        while (true) { 
-            try {
+
+    public static void deleteAnElement(LinkedList linkedList){
+        while (true) {
+           try {
                 System.out.println("Insert the position (Rembember that the first position is 0)");
                 int position = Integer.parseInt(scanner.nextLine());
-                linkedList.deleteAnElement(position);
+                linkedList.deteleAnElemente(position);
                 System.out.println("Element deleted");
                 break;
             } catch (NumberFormatException e) {
@@ -112,13 +112,13 @@ public class LinkedListHandler {
     }
 
     public static void reversedRecursive(LinkedList linkedList){
-        try {
+        try{
             linkedList.reversedRecursive(linkedList.head);
-        } catch (LinkedListEmptyException e) {
-            System.err.println(e.getMessage());
-        }    
+        }catch(LinkedListEmptyException e){
+             System.err.println(e.getMessage());
+        }
     }
-    
+
     public static void showMenu() {
         String dash = "-".repeat(35) + "\n";
         System.out.println(dash);
@@ -135,9 +135,7 @@ public class LinkedListHandler {
         System.out.println(dash);
     }
 
-
-
-    public static void main(String[] args) {
+     public static void main(String[] args) {
 
         LinkedList linkedList = new LinkedList();
 
@@ -151,13 +149,13 @@ public class LinkedListHandler {
                 option = Integer.parseInt(scanner.nextLine());
 
                 switch (option) {
-                    case 1 -> LinkedListHandler.read(linkedList);
+                    case 1 -> read(linkedList);
                     case 2 -> LinkedListHandler.readRecursive(linkedList);
                     case 3 -> LinkedListHandler.addElementAtBegining(linkedList);
                     case 4 -> LinkedListHandler.addElementAtNPosition(linkedList);
                     case 5 -> LinkedListHandler.addElementAtEnd(linkedList);
                     case 6 -> LinkedListHandler.updateAnElement(linkedList);
-                    case 7 -> LinkedListHandler.deleteAnElement(linkedList);
+                    case 7 -> deleteAnElement(linkedList);
                     case 8 -> LinkedListHandler.reversed(linkedList);
                     case 9 -> LinkedListHandler.reversedRecursive(linkedList);
                     // case 10 -> LinkedListHandler.findMergePoint();
@@ -170,4 +168,5 @@ public class LinkedListHandler {
 
         scanner.close();
     }
+
 }

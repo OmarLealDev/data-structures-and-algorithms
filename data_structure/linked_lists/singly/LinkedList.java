@@ -34,7 +34,7 @@ public class LinkedList {
         Node newNode = new Node(value);
         Node temp = head;
 
-        for(int i = 0; i < position && temp.next != null; i++) {
+        for(int i = 0; i < position -1 ; i++) {
             temp = temp.next;
         }
 
@@ -88,7 +88,7 @@ public class LinkedList {
         Node temp = head;
 
         while (temp != null) {
-            System.out.println(temp.data + " -> ");
+            System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
 
@@ -105,7 +105,7 @@ public class LinkedList {
         readRecursive(headPointer.next);
     }
     
-     public void updateAnElement(int data, int position) {
+    public void updateAnElement(int data, int position) {
         if(position < 0) throw new IndexOutOfBoundsException("Position out of bounds, must be greater than 0");
 
         if(head == null) throw new LinkedListEmptyException("Empty linked list, nothing to update");
