@@ -18,9 +18,9 @@ public class BinarySearchTree {
         if(rootPointer == null){
             rootPointer = new Node(newValue);
         }else if (newValue <= rootPointer.data) {
-            rootPointer.left = insert(rootPointer, newValue);
+            rootPointer.left = insert(rootPointer.left, newValue);
         }else{
-            rootPointer.right = insert(rootPointer, newValue);
+            rootPointer.right = insert(rootPointer.right, newValue);
         }
 
         return rootPointer;
@@ -35,7 +35,7 @@ public class BinarySearchTree {
             return rootPointer;
         }
 
-        return findMinNode(rootPointer);
+        return findMinNode(rootPointer.left);
     }
 
     public Node delete(Node rootPointer, int data){

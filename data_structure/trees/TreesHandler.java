@@ -12,6 +12,7 @@ public class TreesHandler {
                 int newValue = Integer.parseInt(scanner.nextLine());
                 bst.root = bst.insert(bst.root, newValue);
                 System.out.println("Element added");
+                break;
 
             }catch(NumberFormatException e){
                 System.err.println("Type an integer");
@@ -26,6 +27,7 @@ public class TreesHandler {
                 int data = Integer.parseInt(scanner.nextLine());
                 bst.root = bst.delete(bst.root, data);
                 System.out.println("Element deleted");
+                break;
 
             }catch(NumberFormatException e){
                 System.err.println("Type an integer");
