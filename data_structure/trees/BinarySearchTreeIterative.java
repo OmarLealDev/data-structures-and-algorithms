@@ -74,14 +74,12 @@ public class BinarySearchTreeIterative {
     public Node detele(Node rootPointer, int data){
         Node curr = rootPointer, parent = null;
 
-        // 1) Buscar el nodo y su padre
         while (curr != null && curr.data != data){
             parent = curr;
             curr = (data < curr.data) ? curr.left : curr.right;
         }
         if (curr == null) return rootPointer; // no encontrado
 
-        // 2) Caso con 2 hijos: reemplazar por el mínimo del subárbol derecho
         if (curr.left != null && curr.right != null){
             Node succParent = curr;
             Node succ = curr.right;
@@ -89,9 +87,8 @@ public class BinarySearchTreeIterative {
                 succParent = succ;
                 succ = succ.left;
             }
-            // Copiar valor y ahora borrar el sucesor (que tendrá a lo mucho un hijo derecho)
             curr.data = succ.data;
-            // Ajustar referencias para borrar succ
+            
             curr = succ;
             parent = succParent;
         }
