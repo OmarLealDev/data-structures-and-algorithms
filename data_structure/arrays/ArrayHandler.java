@@ -127,6 +127,120 @@ public class ArrayHandler {
 
     }
 
+    public void bubbleSort(){
+        if(size == 0){
+            System.out.println("Arreglo vacio");
+            return;
+        }
+
+        System.out.println("Arreglo a ordenar:");
+        imprimir(array);
+
+        bubble(array);
+
+        System.out.println("Arreglo ordenado:");
+        imprimir(array);
+
+
+
+
+    }
+
+    public void bubble(int[] list){
+
+        for(int i = 0; i < list.length - 1; i++){
+
+            boolean swapped = false;
+
+            for(int j = 0; j < list.length - 1 - i; j++){
+
+                if(list[j] > list[j + 1]){
+
+                    int temp = list[j];
+
+                    list[j] = list[j + 1];
+
+                    list[j + 1] = temp;
+
+                    swapped = true;
+                }
+            }
+
+            if (!swapped) {
+                break;
+            }
+
+        }
+
+    }
+
+    public void selectionSort(){
+        if(size == 0){
+            System.out.println("Arreglo vacio");
+            return;
+        }
+
+        System.out.println("Arreglo a ordenar:");
+        imprimir(array);
+
+        selection(array);
+
+        System.out.println("Arreglo ordenado:");
+        imprimir(array);
+    }
+
+    public void selection(int[] list) {
+        // Selection sort implementation
+        for(int i = 0; i < list.length - 1; i++){
+            int minIndex = i;
+            for(int j = i + 1; j < list.length; j++){
+                if(list[j] < list[minIndex]){
+                    minIndex = j;
+                }
+            }
+            if(minIndex != i){
+                int temp = list[i];
+                list[i] = list[minIndex];
+                list[minIndex] = temp;
+            }
+        }
+    }
+
+    public void insertionSort(){
+        if(size == 0){
+            System.out.println("Arreglo vacio");
+            return;
+        }
+
+        System.out.println("Arreglo a ordenar:");
+        imprimir(array);
+
+        insertion(array);
+
+        System.out.println("Arreglo ordenado:");
+        imprimir(array);
+    }
+
+    public void insertion(int[] list) {
+        for(int i = 1; i < list.length; i++){
+            int key = list[i];
+            int hole = i;
+
+            while(hole > 0 && list[hole - 1] > key){
+                list[hole] = list[hole - 1];
+                hole--;
+            }
+            list[hole] = key;
+        }
+    }
+
+    public static void imprimir(int[] array){
+        for(int i = 0; i < array.length; i++){
+            System.out.print(array[i] + " ");
+        }
+        System.out.println("\n");
+    }
+
     public static void showMenu(){
         System.out.println("-----------------------------------");
         System.out.println("1. Leer arreglo");
@@ -134,6 +248,9 @@ public class ArrayHandler {
         System.out.println("3. Leer un elemento del arreglo");
         System.out.println("4. Actualizar un elemento del arreglo");
         System.out.println("5. Eliminar un elemento del arreglo");
+        System.out.println("6. Ordenar arreglo con Bubble Sort");
+        System.out.println("7. Ordenar arreglo con Selection Sort");
+        System.out.println("8. Ordenar arreglo con Insertion Sort");
         System.out.println("0. Salir");
         System.out.println("-----------------------------------");
     }
@@ -156,6 +273,9 @@ public class ArrayHandler {
                     case 3 -> arrayHandler.leerUnElemento();
                     case 4 -> arrayHandler.actualizarUnElemento();
                     case 5 -> arrayHandler.eliminarUnElemento();
+                    case 6 -> arrayHandler.bubbleSort();
+                    case 7 -> arrayHandler.selectionSort();
+                    case 8 -> arrayHandler.insertionSort();
                     default -> System.out.println("Opción no soportada");
                 }
             } catch (NumberFormatException e) {
